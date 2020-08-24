@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { NavItem } from 'reactstrap';
+import { isAuthenticated } from '../services/apiAuth';
+
+const { user } = isAuthenticated();
 
 const Navigation = () => {
 
@@ -16,16 +19,27 @@ const Navigation = () => {
               Home
             </Link>
           </NavItem>
-          <NavItem className="nav-link">
+          { !isAuthenticated() && 
+            <>
+            <NavItem className="nav-link">
+              <Link className="nav-link"to="/singin" >
+                Login
+              </Link>
+            </NavItem>
+            <NavItem className="nav-link">
+              <Link className="nav-link"to="/singup" >
+                Signup
+              </Link>
+            </NavItem>
+            </>
+          }
+          { isAuthenticated() &&
+            <NavItem className="nav-link">
             <Link className="nav-link"to="/" >
-              Login
+              Signout
             </Link>
           </NavItem>
-          <NavItem className="nav-link">
-            <Link className="nav-link"to="/" >
-              Signup
-            </Link>
-          </NavItem>
+          }
         </ul>
       </nav>
     </>
