@@ -5,6 +5,8 @@ import { BrowserRouter, Switch, Route} from 'react-router-dom';
 import Home from './components/views/Home'
 import Signup from './components/views/Signup';
 import Signin from './components/views/Signin';
+import AddVideogame from './components/views/AddVideogame'
+import AddCategory from './components/views/AddCategory'
 
 const Routes = () => {
   return (
@@ -13,6 +15,8 @@ const Routes = () => {
         <Route path="/" exact component={Home} />
         <Route path="/singup" exact component={Signup} />
         <Route path="/singin" exact component={Signin} />
+        <Route path="/create-category" exact component={AddCategory} />
+        <Route path="/create-product" exact component={AddVideogame} />
       </Switch>
     </BrowserRouter>
   )

@@ -1,8 +1,8 @@
 import { API } from '../../config';
 
-export const getVideogames = () => {
+export const getCategories = () => {
   return fetch(
-    `${API}/videogame/videogames`,
+    `${API}/category/categories`,
     {
       method: "GET"
     }
@@ -14,14 +14,15 @@ export const getVideogames = () => {
     .catch(err => console.log(err));
 }
 
-export const createVideogame = (userId, token, videogame) => {
-  return fetch(`${API}/videogame/create`, {
+export const createCategory = (category) => {
+  
+  return fetch(`${API}/category/create`, {
     method: "POST",
     headers: {
-      Accept: 'application/json',
-      Authorization: `Bearer ${token}`
+      Accept: "application/json",
+      "Content-Type": "application/json"
     },
-    body: videogame
+    body: JSON.stringify(category)
   })
     .then(response => {
       return response.json()
